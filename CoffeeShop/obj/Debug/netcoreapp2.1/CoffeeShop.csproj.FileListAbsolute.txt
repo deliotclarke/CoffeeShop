@@ -1,0 +1,14 @@
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\bin\Debug\netcoreapp2.1\CoffeeShop.deps.json
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\bin\Debug\netcoreapp2.1\CoffeeShop.runtimeconfig.json
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\bin\Debug\netcoreapp2.1\CoffeeShop.runtimeconfig.dev.json
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\bin\Debug\netcoreapp2.1\CoffeeShop.dll
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\bin\Debug\netcoreapp2.1\CoffeeShop.pdb
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.csprojAssemblyReference.cache
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.csproj.CoreCompileInputs.cache
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.RazorAssemblyInfo.cache
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.RazorAssemblyInfo.cs
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.AssemblyInfoInputs.cache
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.AssemblyInfo.cs
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.RazorTargetAssemblyInfo.cache
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.dll
+C:\Users\delio\workspace\csharp\CoffeeShop\CoffeeShop\obj\Debug\netcoreapp2.1\CoffeeShop.pdb
