@@ -29,35 +29,35 @@ namespace CoffeeShop.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult<List<Coffee>> Get()
-        {
-            using (SqlConnection conn = Connection)
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT Id, Title, BeanType FROM Coffee";
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    List<Coffee> coffees = new List<Coffee>();
+        //[HttpGet]
+        //public ActionResult Get()
+        //{
+        //    using (SqlConnection conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (SqlCommand cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = "SELECT Id, Title, BeanType FROM Coffee";
+        //            SqlDataReader reader = cmd.ExecuteReader();
+        //            List<Coffee> coffees = new List<Coffee>();
 
-                    while (reader.Read())
-                    {
-                        Coffee coffee = new Coffee
-                        {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            Title = reader.GetString(reader.GetOrdinal("Title")),
-                            BeanType = reader.GetString(reader.GetOrdinal("BeanType"))
-                        };
+        //            while (reader.Read())
+        //            {
+        //                Coffee coffee = new Coffee
+        //                {
+        //                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+        //                    Title = reader.GetString(reader.GetOrdinal("Title")),
+        //                    BeanType = reader.GetString(reader.GetOrdinal("BeanType"))
+        //                };
 
-                        coffees.Add(coffee);
-                    }
-                    reader.Close();
+        //                coffees.Add(coffee);
+        //            }
+        //            reader.Close();
 
-                    return Ok(coffees);
-                }
-            }
-        }
+        //            return Ok(coffees);
+        //        }
+        //    }
+        //}
 
         [HttpGet("{id}", Name = "GetCoffee")]
         public ActionResult<Coffee> Get([FromRoute] int id)
@@ -97,6 +97,54 @@ namespace CoffeeShop.Controllers
                     reader.Close();
 
                     return Ok(coffee);
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<List<Coffee>> Get([FromQuery] string beanType, [FromQuery] string sortBy)
+        {
+            if (beanType == null)
+            {
+                beanType = "";
+            }
+
+            if (sortBy == null || sortBy.ToLower() != "beantype")
+            {
+                sortBy = "BeanType";
+            }
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT
+                            Id, Title, BeanType
+                        FROM Coffee
+                        WHERE BeanType LIKE '%' + @beanType + '%'";
+                    cmd.Parameters.Add(new SqlParameter("@beanType", beanType));
+                    cmd.Parameters.Add(new SqlParameter("@sorted", sortBy));
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    List<Coffee> coffees = new List<Coffee>();
+
+                    // this has to be declared because you're expecting something to fill it - that way if the reader doesn't run because nothing comes back
+                    // you can then handle the error with the if statement below the reader.
+
+                    while (reader.Read())
+                    {
+                        Coffee coffee = new Coffee
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Title = reader.GetString(reader.GetOrdinal("Title")),
+                            BeanType = reader.GetString(reader.GetOrdinal("BeanType"))
+                        };
+
+                        coffees.Add(coffee);
+                    }
+                    reader.Close();
+
+                    return Ok(coffees);
                 }
             }
         }
